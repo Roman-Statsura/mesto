@@ -1,4 +1,4 @@
-class CardList {
+export default class CardList {
     constructor(container,popupZoom,createNewCard,api,userId,improveUx,animation){
         this.container = container;
         this.popupZoom = popupZoom;

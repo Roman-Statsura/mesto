@@ -1,4 +1,4 @@
-class UxLoading {
+export default class UxLoading {
     constructor(isLoading, container, animation){
         this.isLoading = isLoading;
         this.container = container;

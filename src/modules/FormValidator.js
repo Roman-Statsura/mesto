@@ -1,23 +1,24 @@
-class FormValidator{
-    constructor(form){
+export default class FormValidator{
+    constructor(form,errorMessages){
         this.form = form;
+        this.errorMessages = errorMessages;
     }
     isValidate(input) {
 
         input.setCustomValidity('');
 
         if (input.validity.valueMissing) {
-          input.setCustomValidity(errorMessages.empty);
+          input.setCustomValidity(this.errorMessages.empty);
           return false
         }
 
         if (input.validity.tooShort || input.validity.tooLong) {
-          input.setCustomValidity(errorMessages.wrongLength);
+          input.setCustomValidity(this.errorMessages.wrongLength);
           return false
         }
 
         if (input.validity.typeMismatch && input.type === 'url') {
-          input.setCustomValidity(errorMessages.wrongUrl);
+          input.setCustomValidity(this.errorMessages.wrongUrl);
           return false
         }
         return input.checkValidity();

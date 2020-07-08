@@ -1,4 +1,19 @@
+import "./pages/index.css";
+
+import Api from "./modules/Api";
+import Card from "./modules/Card";
+import CardList from "./modules/CardList";
+import FormValidator from "./modules/FormValidator";
+import Popup from "./modules/Popup";
+import PopupAvatar from "./modules/PopupAvatar";
+import PopupZoom from "./modules/PopupZoom";
+import UserInfo from "./modules/UserInfo";
+import UserInfoPopup from "./modules/UserInfoPopup";
+import Ux from "./modules/Ux";
+import UxLoading from "./modules/UxLoading";
+
 (function () {
+
 const userId = document.querySelector('.user-info');
 const placesList = document.querySelector('.places-list')
 const popup = document.querySelector('.popup_form');
@@ -29,6 +44,12 @@ const config = {
       'Content-Type': 'application/json'
     }
 };
+
+const errorMessages = {
+  empty: 'Это обязательное поле',
+  wrongLength: 'Должно быть от 2 до 30 символов',
+  wrongUrl: 'Здесь должна быть ссылка',
+}
 
 
 const api = new Api(config);
@@ -70,38 +91,13 @@ userInfoPopup.setEventListeners();
 
 
 // Валидация
-const formValidatorNewPlace = new FormValidator(form);
+const formValidatorNewPlace = new FormValidator(form,errorMessages);
 formValidatorNewPlace.setEventListeners(buttonCloseForm);
 
-const formValidatorUserInfo = new FormValidator(formEdit);
+const formValidatorUserInfo = new FormValidator(formEdit,errorMessages);
 formValidatorUserInfo.setEventListeners(buttonCloseEdit);
 
-const formValidatorAvatar = new FormValidator(formAvatar);
+const formValidatorAvatar = new FormValidator(formAvatar,errorMessages);
 formValidatorAvatar.setEventListeners(buttonCloseAvatar);
 
 })();
-
-/**
- * Привет! У вас получилась очень хорошая работа, функционал работает в соответствии с проектным заданием,
- * без очевидных багов, но есть небольшие замечания по организации кода, которые необходимо исправить.
- *
- * Что понравилось:
- *  - Выполнены все(!) дополнительные задания.
- *  - Корректная работа с асинхронным кодом (.then, .catch, .finally)
- *  - Продвинутый UI - индикаторы загрузки на кнопках в форме и в контейнере карточек.
- *
- * Что надо исправить для того, чтобы работа была принята:(!ИСПРАВЛЕНО!)
- *  - Все комментарии в коде, отмеченные как "Надо исправить"
- */
-
-/**
- * 9-ый спринт, 2-я итерация
- * Отлично, основная часть комментариев проработана и исправлена, нам осталось до конца разобраться с удалением
- * обработчиков событий - подробнее см. комментарий в Card.js, отмеченный как "Надо исправить".
- * Также советую обратить внимание на комментарии в коде, отмеченные как "Можно лучше".
- */
-
-/**
- * Супер, все критичные замечания исправлены.
- * Успехов на следующих спринтах!
- */

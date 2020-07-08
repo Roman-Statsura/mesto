@@ -1,4 +1,4 @@
-class Ux {
+export default class Ux {
     constructor(isLoading, button){
         this.isLoading = isLoading;
         this.button = button;
