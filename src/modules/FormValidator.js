@@ -1,24 +1,25 @@
+import {errorMessages} from "./errorMessages";
+
 export default class FormValidator{
-    constructor(form,errorMessages){
+    constructor(form){
         this.form = form;
-        this.errorMessages = errorMessages;
     }
     isValidate(input) {
 
         input.setCustomValidity('');
 
         if (input.validity.valueMissing) {
-          input.setCustomValidity(this.errorMessages.empty);
+          input.setCustomValidity(errorMessages.empty);
           return false
         }
 
         if (input.validity.tooShort || input.validity.tooLong) {
-          input.setCustomValidity(this.errorMessages.wrongLength);
+          input.setCustomValidity(errorMessages.wrongLength);
           return false
         }
 
         if (input.validity.typeMismatch && input.type === 'url') {
-          input.setCustomValidity(this.errorMessages.wrongUrl);
+          input.setCustomValidity(errorMessages.wrongUrl);
           return false
         }
         return input.checkValidity();

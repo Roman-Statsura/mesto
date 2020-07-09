@@ -38,22 +38,13 @@ const userInfoPhoto = document.querySelector('.user-info__photo');
 const spinner = document.querySelector('.spinner');
 
 const config = {
-  url: 'https://praktikum.tk/cohort11/',
+  url:  (process.env.NODE_ENV === 'production' ? 'https://praktikum.tk/cohort11/':'http://praktikum.tk/cohort11/'),
   headers: {
       authorization: 'f7e35f4c-8632-47a0-8555-47e76426a1c2',
       'Content-Type': 'application/json'
     }
 };
-
-const errorMessages = {
-  empty: 'Это обязательное поле',
-  wrongLength: 'Должно быть от 2 до 30 символов',
-  wrongUrl: 'Здесь должна быть ссылка',
-}
-
-
 const api = new Api(config);
-
 
 // Откртие Popap'а с картинкой
 const popupZoom = new PopupZoom(buttonCloseCard,popupCard,popupCardImage);
@@ -91,13 +82,13 @@ userInfoPopup.setEventListeners();
 
 
 // Валидация
-const formValidatorNewPlace = new FormValidator(form,errorMessages);
+const formValidatorNewPlace = new FormValidator(form);
 formValidatorNewPlace.setEventListeners(buttonCloseForm);
 
-const formValidatorUserInfo = new FormValidator(formEdit,errorMessages);
+const formValidatorUserInfo = new FormValidator(formEdit);
 formValidatorUserInfo.setEventListeners(buttonCloseEdit);
 
-const formValidatorAvatar = new FormValidator(formAvatar,errorMessages);
+const formValidatorAvatar = new FormValidator(formAvatar);
 formValidatorAvatar.setEventListeners(buttonCloseAvatar);
 
 })();

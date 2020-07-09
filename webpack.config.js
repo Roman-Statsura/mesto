@@ -16,16 +16,33 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        test: /\.js$/, // include .js files
+        enforce: "pre", // preload the jshint loader
+        exclude: /node_modules/, // exclude any and all files in the `node_modules folder`
+        use: [
+            {
+            loader: "babel-loader",
+              options: {
+                presets: [
+                  "@babel/preset-env"      
+                ],
+                plugins: [
+                  "@babel/plugin-syntax-dynamic-import",
+                  "@babel/plugin-proposal-class-properties"
+                ]
+              }
+            }
+        ]
       },
       {
         test: /\.css$/i,
         use: [ 
-            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,'css-loader', 'postcss-loader'
+            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,{
+              loader:'css-loader',
+              options: {
+                  importLoaders: 2
+              } 
+          }, 'postcss-loader'
             ]
         },
       {
@@ -48,28 +65,7 @@ module.exports = {
         {
             test: /\.(eot|ttf|woff|woff2)$/,
             loader: 'file-loader?name=./vendor/[name].[ext]'
-        },
-        {
-          test: /\.js$/, // include .js files
-          enforce: "pre", // preload the jshint loader
-          exclude: /node_modules/, // exclude any and all files in the `node_modules folder`
-          use: [
-              {
-              
-                  loader: "babel-loader",
-                  options: {
-                      presets: [
-                          "@babel/preset-env"
-                         
-                      ],
-                      plugins: [
-                          "@babel/plugin-syntax-dynamic-import",
-                          "@babel/plugin-proposal-class-properties"
-                      ]
-                  }
-            
-          },
-      ]}
+        }
     ]
   },
   plugins: [
