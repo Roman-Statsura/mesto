@@ -1,4 +1,4 @@
-class PopupAvatar {
+export default class PopupAvatar {
     constructor(userInfoPhoto, popup, form, api){
         this.userInfoPhoto = userInfoPhoto;
         this.popup = popup;

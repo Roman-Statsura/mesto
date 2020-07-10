@@ -1,4 +1,4 @@
-class UserInfo {
+export default class UserInfo {
     constructor(editInputName,editInputJob,profileName,job,popup,userInfoPhoto,api,userId){
         this.editInputName = editInputName;
         this.editInputJob = editInputJob;

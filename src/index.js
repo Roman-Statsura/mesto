@@ -1,4 +1,19 @@
+import "./pages/index.css";
+
+import Api from "./modules/Api";
+import Card from "./modules/Card";
+import CardList from "./modules/CardList";
+import FormValidator from "./modules/FormValidator";
+import Popup from "./modules/Popup";
+import PopupAvatar from "./modules/PopupAvatar";
+import PopupZoom from "./modules/PopupZoom";
+import UserInfo from "./modules/UserInfo";
+import UserInfoPopup from "./modules/UserInfoPopup";
+import Ux from "./modules/Ux";
+import UxLoading from "./modules/UxLoading";
+
 (function () {
+
 const userId = document.querySelector('.user-info');
 const placesList = document.querySelector('.places-list')
 const popup = document.querySelector('.popup_form');
@@ -23,17 +38,14 @@ const userInfoPhoto = document.querySelector('.user-info__photo');
 const spinner = document.querySelector('.spinner');
 
 const config = {
-  url: 'https://praktikum.tk/cohort11/',
+  url:  (NODE_ENV === 'production' ? 'https://praktikum.tk/cohort11/':'http://praktikum.tk/cohort11/'),
   headers: {
       authorization: 'f7e35f4c-8632-47a0-8555-47e76426a1c2',
       'Content-Type': 'application/json'
     }
 };
-
-
 const api = new Api(config);
-
-
+console.log(NODE_ENV)
 // Откртие Popap'а с картинкой
 const popupZoom = new PopupZoom(buttonCloseCard,popupCard,popupCardImage);
 popupZoom.setEventListeners();
@@ -80,28 +92,3 @@ const formValidatorAvatar = new FormValidator(formAvatar);
 formValidatorAvatar.setEventListeners(buttonCloseAvatar);
 
 })();
-
-/**
- * Привет! У вас получилась очень хорошая работа, функционал работает в соответствии с проектным заданием,
- * без очевидных багов, но есть небольшие замечания по организации кода, которые необходимо исправить.
- *
- * Что понравилось:
- *  - Выполнены все(!) дополнительные задания.
- *  - Корректная работа с асинхронным кодом (.then, .catch, .finally)
- *  - Продвинутый UI - индикаторы загрузки на кнопках в форме и в контейнере карточек.
- *
- * Что надо исправить для того, чтобы работа была принята:(!ИСПРАВЛЕНО!)
- *  - Все комментарии в коде, отмеченные как "Надо исправить"
- */
-
-/**
- * 9-ый спринт, 2-я итерация
- * Отлично, основная часть комментариев проработана и исправлена, нам осталось до конца разобраться с удалением
- * обработчиков событий - подробнее см. комментарий в Card.js, отмеченный как "Надо исправить".
- * Также советую обратить внимание на комментарии в коде, отмеченные как "Можно лучше".
- */
-
-/**
- * Супер, все критичные замечания исправлены.
- * Успехов на следующих спринтах!
- */

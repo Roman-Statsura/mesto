@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
 </head>
 <body>
   <div class="root">
     <header class="header root__section">
-      <img src="./images/logo.svg" alt="mesto logo" class="logo">
+      <img src="<%=require('./images/logo.svg')%>" alt="mesto logo" class="logo">
     </header>
     <div class="profile root__section">
       <div class="user-info">
@@ -27,7 +27,7 @@
     </div>
     <div class="popup popup_form">
       <div class="popup__content">
-        <img src="./images/close.svg" alt="" class="popup__close popup__close_form">
+        <img src="<%=require('./images/close.svg')%>" alt="" class="popup__close popup__close_form">
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="new">
             <input id ="name-card" type="text" name="name" class="popup__input popup__input_type_name" placeholder="Название" minlength="2" maxlength="30" required>
@@ -40,7 +40,7 @@
     </div>
     <div class="popup popup_edit">
       <div class="popup__content">
-        <img src="./images/close.svg" alt="" class="popup__close popup__close_edit">
+        <img src="<%=require('./images/close.svg')%>" alt="" class="popup__close popup__close_edit">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="edit">
             <input id="name" type="text" name="name" class="popup__input popup__input_type_name" placeholder="Name" minlength="2" maxlength="30" required>
@@ -53,13 +53,13 @@
     </div>
   <div class="popup-card">
     <div class="popup-card__content">
-      <img src="./images/close.svg" alt="" class="popup__close popup__close_card">
+      <img src="<%=require('./images/close.svg')%>" alt="" class="popup__close popup__close_card">
       <img  class="popup-card__image">
     </div>
   </div>
   <div class="popup popup_avatar">
     <div class="popup__content">
-      <img src="./images/close.svg" alt="" class="popup__close popup__close_avatar">
+      <img src="<%=require('./images/close.svg')%>" alt="" class="popup__close popup__close_avatar">
       <h3 class="popup__title">Обновить аватар</h3>
       <form class="popup__form" name="avatar">
         <input id="avatar" type="url" name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на картинку" required>
@@ -70,18 +70,6 @@
   </div>
   <div class="spinner"><i></i></div>
   </div>
-  <script src="./scripts/errorMessages.js"></script>
-  <script src="./scripts/Api.js"></script>
-  <script src="./scripts/Ux.js"></script>
-  <script src="./scripts/Card.js"></script>
-  <script src="./scripts/CardList.js"></script>
-  <script src="./scripts/UxLoading.js"></script>
-  <script src="./scripts/Popup.js"></script>
-  <script src="./scripts/PopupAvatar.js"></script>
-  <script src="./scripts/UserInfo.js"></script>
-  <script src="./scripts/PopupZoom.js"></script>
-  <script src="./scripts/UserInfoPopup.js"></script>
-  <script src="./scripts/FormValidator.js"></script>
-  <script src="./scripts/main.js"></script>
+  <script src="<%= htmlWebpackPlugin.files.js %>"></script>
 </body>
 </html>
