@@ -38,7 +38,7 @@ const userInfoPhoto = document.querySelector('.user-info__photo');
 const spinner = document.querySelector('.spinner');
 
 const config = {
-  url:  (process.env.NODE_ENV === 'production' ? 'https://praktikum.tk/cohort11/':'http://praktikum.tk/cohort11/'),
+  url:  (NODE_ENV === 'production' ? 'https://praktikum.tk/cohort11/':'http://praktikum.tk/cohort11/'),
   headers: {
       authorization: 'f7e35f4c-8632-47a0-8555-47e76426a1c2',
       'Content-Type': 'application/json'
