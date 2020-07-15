@@ -45,7 +45,7 @@ const config = {
     }
 };
 const api = new Api(config);
-console.log(NODE_ENV)
+
 // Откртие Popap'а с картинкой
 const popupZoom = new PopupZoom(buttonCloseCard,popupCard,popupCardImage);
 popupZoom.setEventListeners();
